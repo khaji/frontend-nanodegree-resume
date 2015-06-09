@@ -12,6 +12,9 @@
   padding-left: 5%;
   padding-right: 5%;
 }
+.work-image {
+  max-width: 197px;
+}
 
 h1 {
   font-size: 40px;

@@ -20,6 +20,7 @@ function displayBio() {
 
 	$("#header").prepend(formattedRole);
 	$("#header").prepend(formattedName);
+	$("#header").prepend(formattedImage);
 
 	if (bio.skills.length > 0) {
 		$("#header").append(HTMLskillsStart);
@@ -81,7 +82,7 @@ projects.display = function() {
 	{
 		"title" : "Web Developer",
 		"dates" : "March 2015",
-		"description" : "Developed a responsive website with bootstrap with over 1,300 pageviews",
+		"description" : "Developed a responsive website with bootstrap which recieved 1,300+ pageviews",
 		"images" : ["images/navs1.png","images/navs2.png"]
 	},
 	{
@@ -107,7 +108,7 @@ projects.display = function() {
 
 		if (projects.projects[project].images.length > 0) {
 			for (image in projects.projects[project].images) {
-				var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images);
+				var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
 
 				$(".project-entry:last").append(formattedImage);
 			}
@@ -204,6 +205,7 @@ displayBio();
 displayWork();
 projects.display();
 displayEducation();
+$("#mapDiv").append(googleMap);
 
 //Log clicks on the page
 $(document).click(function(loc) {
@@ -237,4 +239,3 @@ $("#main").append(internationalizeButton); */
 
 
 
-$("#mapDiv").append(googleMap);
