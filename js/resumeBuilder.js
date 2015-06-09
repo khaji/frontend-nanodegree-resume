@@ -15,12 +15,33 @@ function displayBio() {
 	}
 
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
-	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-	var formattedImage = HTMLbioPic.replace("%data%", bio.bioPic);
-
-	$("#header").prepend(formattedRole);
 	$("#header").prepend(formattedName);
-	$("#header").prepend(formattedImage);
+
+	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+	$("#header").append(formattedRole);
+
+	var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+	$("#header:last").append(formattedWelcome);
+
+	var formattedImage = HTMLbioPic.replace("%data%", bio.bioPic);
+	$("#header:last").append(formattedImage);
+
+	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+	$("#topContacts:last").prepend(formattedEmail);
+	$("#letsConnect").append(formattedEmail);
+
+	var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+	$("#topContacts:last").prepend(formattedTwitter);
+	$("#tletsConnect").append(formattedTwitter);
+	
+	var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+	$("#topContacts:last").prepend(formattedGithub);
+	$("#letsConnect").append(formattedGithub);
+
+	var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+	$("#topContacts:last").prepend(formattedLocation);
+	$("#letsConnect").append(formattedLocation);
+	
 
 	if (bio.skills.length > 0) {
 		$("#header").append(HTMLskillsStart);
@@ -74,6 +95,8 @@ function displayWork() {
 		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 		$(".work-entry:last").append(formattedDescription);
 	}
+
+	$("#mapDiv").append(googleMap);
 }
 
 projects.display = function() {
@@ -198,15 +221,6 @@ function displayEducation() {
 	}
 }
 
-
-
-//call functions to display on page
-displayBio();
-displayWork();
-projects.display();
-displayEducation();
-$("#mapDiv").append(googleMap);
-
 //Log clicks on the page
 $(document).click(function(loc) {
 	var x = loc.pageX;
@@ -223,7 +237,13 @@ function locationizer(work_obj) {
 	}
 
 	return locationArray;
-}
+};
+
+//call functions to display on page
+displayBio();
+displayWork();
+projects.display();
+displayEducation();
 
 /*
 function inName(name) {
